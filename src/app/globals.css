@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Syne", system-ui, sans-serif;
+  --font-mono:    "DM Mono", ui-monospace, monospace;
+
+  --color-bg:             #0E0D0B;
+  --color-bg-surface:     #151410;
+  --color-bg-elevated:    #1C1A15;
+  --color-border:         #282318;
+  --color-border-strong:  #3A3328;
+  --color-amber:          #EF9F27;
+  --color-amber-dim:      #6E4D0E;
+  --color-amber-muted:    #3A2A08;
+  --color-text-primary:   #EFEBDE;
+  --color-text-secondary: #897D77;
+  --color-text-muted:     #524D47;
+  --color-text-faint:     #322E29;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* ── fluid root font: 14px@320px → 18px@2560px ── */
+  font-size: clamp(0.875rem, 0.8rem + 0.33vw, 1.125rem);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-mono);
+  line-height: 1.7;
+}
+
+::selection { background-color: var(--color-amber-muted); color: var(--color-amber); }
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-border-strong); border-radius: 2px; }
+:focus-visible { outline: 2px solid var(--color-amber); outline-offset: 3px; }
+
+/* ── Fluid spacing scale (used as CSS vars everywhere) ───────────────────── */
+:root {
+  /* Horizontal page padding — 20px@320 → 160px@2560 */
+  --page-px: clamp(1.25rem, 1rem + 4vw, 10rem);
+  /* Max content width */
+  --content-w: 1280px;
+  /* 4K max content width */
+  --content-w-4k: 1920px;
+}
+
+/* ── Animations ──────────────────────────────────────────────────────────── */
+@keyframes ping {
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+
+@utility font-display { font-family: var(--font-display); }
+@utility font-mono    { font-family: var(--font-mono); }
